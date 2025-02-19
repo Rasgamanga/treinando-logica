@@ -50,7 +50,7 @@ print(f"A lista em ordem crescente fica: {sorted(lista)}")
 #Crie um programa onde o usuário possa digitar cinco valores numéricos e cadastre-os em uma lista, já na posição correta de inserção (sem usar o sort()).
 #No final, mostre a lista ordenada na tela.
 
-
+'''
 lista = []
 
 for n in range(0,5):
@@ -58,9 +58,9 @@ for n in range(0,5):
     if n == 0:
         lista.append(num)
     else:
-        for c in range (len(lista)):
-            if num < lista[c]:
-                lista.insert(c,num)
+        for pos in range (len(lista)):
+            if num < lista[pos]:
+                lista.insert(pos,num)
                 break
         if num > max(lista):
             lista.append(num)
@@ -69,3 +69,88 @@ for n in range(0,5):
 
 
 print((lista))
+'''
+
+#Crie um programa que vai ler vários números e colocar em uma lista. Depois disso, mostre:
+#A) Quantos números foram digitados.
+#B) A lista de valores, ordenada de forma decrescente.
+#C) Se o valor 5 foi digitado e está ou não na lista.
+'''
+lista = []
+while True:
+    num = int(input("Digite um valor: "))
+    lista.append(num)
+    pergunta = str(input("Quer continuar ?").lower().strip()[0])
+    if  pergunta == 's':
+        continue
+    elif pergunta == 'n':
+        break
+    else:
+        print("Resposta invalida")
+        print('-='*15)
+        if str(input("Voce quer continuar ? (sim ou não)").lower().strip()[0]):
+            continue
+        else:
+            break
+
+print(f"Foi digitado no total {len(lista)} números")
+lista.sort(reverse=True)
+print(f"A lista dos valores em ordem descrecente fica: {lista}")
+if lista.index(5) == True:
+    print("Tem um número 5 em sua lista")
+else:
+    print("O número 5 não está presente em sua lista")
+'''
+
+#Crie um programa que vai ler vários números e colocar em uma lista.
+#Depois disso, crie duas listas extras que vão conter apenas os valores pares e os valores ímpares digitados, respectivamente.
+#Ao final, mostre o conteúdo das três listas geradas.
+'''
+lista = []
+pares = []
+impares = []
+while True:
+    num = int(input("Digite um número: "))
+    lista.append(num)
+    pergunta = str(input("Quer continuar ?")).lower().strip()[0]
+    if pergunta in 'n':
+        break
+    elif pergunta in 's':
+        continue
+    else:
+        print("Resposta invalida!")
+        print('-='*15)
+        if str(input("Quer continuar ?(Sim ou Não) ").strip().lower()[0]) == 's':
+            continue
+        break
+
+for valor in lista:
+    if valor % 2 == 0:
+        pares.append(valor)
+    elif valor % 2 == 1:
+        impares.append(valor)
+
+print(f"Você digitou esses valores: {lista}")
+print(f"Listas de pares: {pares}")
+print(f"Lista de impares: {impares} ")
+'''
+
+#Crie um programa onde o usuário digite uma expressão qualquer que use parênteses.
+#Seu aplicativo deverá analisar se a expressão passada está com os parênteses abertos e fechados na ordem correta.
+
+lista=[]
+
+expressao=str(input("Digite uma expressão(com parenteses): ")).strip()
+#expressao=' '.join(expressao)
+#expressao = expressao.split()
+for elemen in expressao:
+    if elemen == '(':
+        lista.append(')')
+    if elemen == ')':
+        lista.pop()
+
+if len(lista)==0:
+    print("Expressão valida")
+
+else:
+    print("Expressão invalida")
