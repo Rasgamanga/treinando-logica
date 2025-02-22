@@ -81,7 +81,7 @@ print(f"Os valores inpares digitados foram: {lista[1]}")'''
 
 #Crie um programa que declare uma matriz de dimensão 3x3 e preencha com valores lidos pelo teclado.
 #No final, mostre a matriz na tela, com a formatação correta.
-
+'''
 matriz=[[0,0,0],[0,0,0],[0,0,0]]
 for p in range(0,3):
     for ps in range (0,3):
@@ -91,5 +91,47 @@ for p in range(0,3):
 for l in range(0,3):
     for c in range(0,3):
         print(f"{matriz[l][c]}", end=' ,')
-    print( )
+    print( )'''
 
+#Aprimore o desafio anterior, mostrando no final: 
+#A) A soma de todos os valores pares digitados.
+#B) A soma dos valores da terceira coluna.
+#C) O maior valor da segunda linha.
+'''
+matriz=[[],[],[]]
+total_par = total_col = maior = 0
+for p in range(0,3):
+    for ps in range (0,3):
+        num =int(input(f"Digite o número para a casa ({p},{ps}): "))
+        matriz[p].append(num)
+        if num % 2 == 0:
+            total_par+=num
+        if p == 2:
+            total_col+=num
+        if ps == 1 and not maior == 0:
+            maior= num
+        maior=num
+
+print(f"A soma dos valores par é {total_par}")
+print(f"A soma dos valores da terceira coluna é {total_col}")
+print(f"E o maior valor da segunda linha é {maior}")'''
+
+#Faça um programa que ajude um jogador da MEGA SENA a criar palpites.
+# O programa vai perguntar quantos jogos serão gerados e vai sortear 6 números entre 1 e 60 para cada jogo, cadastrando tudo em uma lista composta.
+from random import randint
+matriz=[[0],[0],[0],[0],[0],[0]]
+verificar = []
+jogos=int(input("Quantos jogos vc quer sortear ? "))
+for c in range(1,jogos+1):
+    for p in range(0,6):
+        valor = randint(1,60)
+        matriz[p][0]= (valor)
+
+        if valor in verificar:
+            a =verificar.index(valor)
+            verificar.pop(a)
+            continue
+        verificar.append(valor)
+    matriz.sort()
+    print(f"Seu {c}o jogo esta aqui: {matriz}")
+    verificar.clear()
