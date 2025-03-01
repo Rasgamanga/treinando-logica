@@ -38,7 +38,7 @@ else:
 #Crie um programa onde 4 jogadores joguem um dado e tenham resultados aleatórios.
 #Guarde esses resultados em um dicionário em Python. No final, coloque esse dicionário em ordem, sabendo que o vencedor tirou o maior número no dado.
 
-from random import randint
+'''from random import randint
 rank= {}
 jogo = {'jogador1': randint(1,6),
         'jogador2': randint(1,6),
@@ -48,9 +48,36 @@ jogo = {'jogador1': randint(1,6),
 for k,v in jogo.items():
     print(f"O {k} tirou no dado {v}")
 rank =sorted(jogo.items(), key=lambda item: item[1], reverse=True)
-print(rank)
-
 
 for i,t in enumerate(rank):
-    print(f"\n{i}o Lugar:O jogador{i} com o valor de: {t[1]}")
+    print(f"\n{i}o Lugar:O jogador{i} com o valor de: {t[1]}")'''
 
+#Crie um programa que leia nome, ano de nascimento e carteira de trabalho e cadastre-o (com idade) em um dicionário.
+#Se por acaso a CTPS for diferente de ZERO, o dicionário receberá também o ano de contratação e o salário. Calcule e acrescente, além da idade, com quantos anos a pessoa vai se aposentar.
+
+dados = {}
+
+while True:
+    dados["nome"]= (str(input("Qual o seu nome ?"))).strip()
+    nasci = int(input("Em que ano você nasceu ?"))
+    idade = 2025 - nasci
+    dados["Idade"] = idade
+    clt = dados["ctps"]=(int(input("Carteira de trabalho (0 = não tem): ")))
+    if clt == 0:
+        break
+    elif clt < 0:
+        print("Carteira invalida")
+        continue
+    else:
+        dados["salário"]=(int(input("Digite seu salário: ")))
+        contratado =dados["contratação"]=(int(input("Ano de contratação")))
+        if contratado < nasci:
+            print("Idade ou contratação invalida")
+            continue
+        break
+
+
+for k,v in dados.items():
+    if k == "contratação":
+        print(f"Sua aposentadoria será em {v + 35 } anos")
+    print(f"{k} = {v}")
